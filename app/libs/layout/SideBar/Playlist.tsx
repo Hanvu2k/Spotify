@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Card from "../../components/Card";
+import "~/style/playList.css";
 
 export default function Playlist() {
   const [isShow, setIsShow] = useState(false);
@@ -8,6 +9,7 @@ export default function Playlist() {
   const playlistHeaderRef = useRef<HTMLDivElement>(null);
   const [searchValue, setSearchValue] = useState("");
   const [isClear, setIsClear] = useState(false);
+  const playlist = [1];
 
   const handleShowInput = () => {
     setIsShow(true);
@@ -67,7 +69,7 @@ export default function Playlist() {
           <div className="px-[16px] py-[8px]">
             <div className="flex items-center gap-[8px] leading-[40px]">
               <div className="flex flex-1">
-                <button className="flex font-semibold items-center">
+                <button className="flex font-semibold items-center hover">
                   <span className="icon mr-[12px]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +81,7 @@ export default function Playlist() {
                   Your Library
                 </button>
               </div>
-              <button className="icon">
+              <button className="icon hover">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
@@ -88,7 +90,7 @@ export default function Playlist() {
                   <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
                 </svg>
               </button>
-              <button className="icon">
+              <button className="icon hover">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
@@ -115,12 +117,12 @@ export default function Playlist() {
           onScroll={handleOnScroll}
         >
           <div className="flex justify-between items-center">
-            <div className="relative">
+            <div className="relative py-[8px]">
               <button
                 className={
                   isShow
-                    ? "icon-disabled absolute top-[10%] left-[2px] z-10 icon-search"
-                    : "icon absolute top-[10%] left-[2px] z-10 icon-search"
+                    ? "icon-disabled absolute top-[14%] left-[2px] z-10 icon-search hover"
+                    : "icon absolute top-[10%] left-[2px] z-10 icon-search hover"
                 }
                 onClick={() => handleShowInput()}
               >
@@ -129,7 +131,11 @@ export default function Playlist() {
                 </svg>
               </button>
               <input
-                className={isShow ? `search-input show` : "search-input"}
+                className={
+                  isShow
+                    ? "search-input show text-[14px] font-medium"
+                    : "search-input text-[14px] font-medium"
+                }
                 type="text"
                 ref={inputRef}
                 value={searchValue}
@@ -140,8 +146,8 @@ export default function Playlist() {
                 ref={closeButtonRef}
                 className={
                   isClear
-                    ? "icon absolute top-[24%] right-[2px] z-10 icon-close--show"
-                    : "icon absolute top-[24%] right-[2px] z-10 icon-close"
+                    ? "icon hover absolute top-[30%] right-[2px] z-10 icon-close--show"
+                    : "icon hover absolute top-[30%] right-[2px] z-10 icon-close"
                 }
                 onClick={handleCloseSearch}
               >
@@ -155,9 +161,9 @@ export default function Playlist() {
               </button>
             </div>
             <div>
-              <div className="flex items-center gap-[5px] px-[12px] py-[4px]">
+              <div className="flex items-center gap-[5px] px-[12px] py-[4px] hover">
                 <div>Recent</div>
-                <span className="icon flex items-center">
+                <span className="icon  flex items-center">
                   <svg
                     className="h-[16px] w-[16px]"
                     xmlns="http://www.w3.org/2000/svg"
@@ -170,10 +176,10 @@ export default function Playlist() {
             </div>
           </div>
           <div className="search-result">
-            {false ? (
+            {playlist?.length === 0 ? (
               <div className="flex flex-col justify-center items-center text-center gap-[16px] p-[16px] h-[360px]">
                 <div className="text-[16px] font-medium">
-                  Couldn't find "{searchValue}"
+                  Couldn&apos;t find &quot;{searchValue}&quot;
                 </div>
                 <div className="text-[14px] font-normal">
                   <p>
@@ -187,10 +193,10 @@ export default function Playlist() {
                   <div>
                     <div className="img-playlist"></div>
                   </div>
-                  <div>
-                    <p>Liked Songs</p>
+                  <div className="text-[16px] ">
+                    <p className="font-medium">Liked Songs</p>
                     <div>
-                      <span>Playlist . 11 songs</span>
+                      <span className="text-[14px]">Playlist . 11 songs</span>
                     </div>
                   </div>
                 </div>
@@ -198,10 +204,10 @@ export default function Playlist() {
                   <div>
                     <div className="img-playlist"></div>
                   </div>
-                  <div>
-                    <p>Liked Songs</p>
+                  <div className="text-[16px] ">
+                    <p className="font-medium">Liked Songs</p>
                     <div>
-                      <span>Playlist . 11 songs</span>
+                      <span className="text-[14px]">Playlist . 11 songs</span>
                     </div>
                   </div>
                 </div>
@@ -209,10 +215,10 @@ export default function Playlist() {
                   <div>
                     <div className="img-playlist"></div>
                   </div>
-                  <div>
-                    <p>Liked Songs</p>
+                  <div className="text-[16px] ">
+                    <p className="font-medium">Liked Songs</p>
                     <div>
-                      <span>Playlist . 11 songs</span>
+                      <span className="text-[14px]">Playlist . 11 songs</span>
                     </div>
                   </div>
                 </div>
@@ -220,10 +226,10 @@ export default function Playlist() {
                   <div>
                     <div className="img-playlist"></div>
                   </div>
-                  <div>
-                    <p>Liked Songs</p>
+                  <div className="text-[16px] ">
+                    <p className="font-medium">Liked Songs</p>
                     <div>
-                      <span>Playlist . 11 songs</span>
+                      <span className="text-[14px]">Playlist . 11 songs</span>
                     </div>
                   </div>
                 </div>
@@ -231,10 +237,10 @@ export default function Playlist() {
                   <div>
                     <div className="img-playlist"></div>
                   </div>
-                  <div>
-                    <p>Liked Songs</p>
+                  <div className="text-[16px] ">
+                    <p className="font-medium">Liked Songs</p>
                     <div>
-                      <span>Playlist . 11 songs</span>
+                      <span className="text-[14px]">Playlist . 11 songs</span>
                     </div>
                   </div>
                 </div>
@@ -242,43 +248,10 @@ export default function Playlist() {
                   <div>
                     <div className="img-playlist"></div>
                   </div>
-                  <div>
-                    <p>Liked Songs</p>
+                  <div className="text-[16px] ">
+                    <p className="font-medium">Liked Songs</p>
                     <div>
-                      <span>Playlist . 11 songs</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="result-item flex p-[8px] gap-[8px]">
-                  <div>
-                    <div className="img-playlist"></div>
-                  </div>
-                  <div>
-                    <p>Liked Songs</p>
-                    <div>
-                      <span>Playlist . 11 songs</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="result-item flex p-[8px] gap-[8px]">
-                  <div>
-                    <div className="img-playlist"></div>
-                  </div>
-                  <div>
-                    <p>Liked Songs</p>
-                    <div>
-                      <span>Playlist . 11 songs</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="result-item flex p-[8px] gap-[8px]">
-                  <div>
-                    <div className="img-playlist"></div>
-                  </div>
-                  <div>
-                    <p>Liked Songs</p>
-                    <div>
-                      <span>Playlist . 11 songs</span>
+                      <span className="text-[14px]">Playlist . 11 songs</span>
                     </div>
                   </div>
                 </div>

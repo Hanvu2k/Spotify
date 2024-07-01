@@ -1,0 +1,181 @@
+.playing-bar {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  height: 100%;
+}
+
+.add-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 16px;
+  width: 16px;
+  line-height: 1;
+  border-radius: 50%;
+  border: 2px solid #b3b3b3;
+  color: #b3b3b3;
+  font-weight: 600;
+  position: relative;
+  cursor: pointer;
+}
+
+.add-icon span {
+  position: absolute;
+  top: -3px;
+  left: 0.8px;
+}
+
+.add-icon:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.icon-play {
+  height: 34px;
+  width: 34px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-play svg {
+  fill: #000;
+}
+
+.active-icon svg {
+  fill: #1fdf64;
+}
+
+.time-line {
+  position: relative;
+  width: 512px;
+  height: 4px;
+}
+
+.time-line_running {
+  position: absolute;
+  z-index: 10;
+  background-color: #fff;
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  animation-name: running;
+  animation-duration: 180s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.time-line_running:hover {
+  background-color: #1fdf64;
+}
+
+.time-line_length {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #4d4d4d;
+  border-radius: 8px;
+  z-index: 9;
+}
+
+@keyframes running {
+  10% {
+    width: 10%;
+  }
+  20% {
+    width: 20%;
+  }
+  30% {
+    width: 30%;
+  }
+  40% {
+    width: 40%;
+  }
+  50% {
+    width: 50%;
+  }
+  60% {
+    width: 60%;
+  }
+  70% {
+    width: 70%;
+  }
+  80% {
+    width: 80%;
+  }
+  90% {
+    width: 90%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.volume-bar {
+  width: 93px;
+  height: 4px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.volume {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  border-radius: 8px;
+}
+
+.volume-now {
+  background-color: #fff;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(calc(-100% + var(--div-width)));
+  position: absolute;
+  z-index: 10;
+  border-radius: inherit;
+  transition: all 0.2s ease;
+}
+
+.volume-bar:hover .volume-now {
+  background-color: #1fdf64;
+}
+
+.volume-bar:hover .circle {
+  opacity: 1;
+}
+
+.icon-audio:hover ~ .volume-bar .circle {
+  opacity: 1;
+}
+
+.icon-audio:hover ~ .volume-bar .volume-now {
+  background-color: #1fdf64;
+}
+
+.volume-bg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: inherit;
+  background-color: #4d4d4d;
+}
+
+.circle {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  left: var(--div-width);
+  top: -60%;
+  background-color: white;
+  margin-left: -6px;
+  will-change: left;
+  z-index: 100;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
