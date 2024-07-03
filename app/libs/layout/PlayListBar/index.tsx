@@ -2,8 +2,11 @@ import { Link } from "@remix-run/react";
 import type { PlaylistBar } from "~/domain/entities/Layout/layout.entity";
 import "~/style/playListBar.css";
 import Audio from "./audio";
+import { useInfo } from "~/stores/info.store";
 
 export default function PlaylistBar({ isActive, callBack }: PlaylistBar) {
+  const { isOpen, toggleInfo } = useInfo();
+
   return (
     <div>
       <div className="footer justify-between items-center">
@@ -90,7 +93,10 @@ export default function PlaylistBar({ isActive, callBack }: PlaylistBar) {
           </div>
           <div className="flex justify-end items-center">
             <div className="flex items-center gap-[16px]">
-              <button className="icon hover">
+              <button
+                className={`icon ${isOpen ? "icon-active" : "hover"}`}
+                onClick={() => toggleInfo(isOpen)}
+              >
                 <svg
                   className="h-[18px]"
                   xmlns="http://www.w3.org/2000/svg"

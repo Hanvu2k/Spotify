@@ -1,0 +1,33 @@
+.box {
+  cursor: pointer;
+  transition: all 0.3.s ease;
+  border-radius: 6px;
+}
+.box:hover {
+  background-color: #1a1a1a;
+}
+
+.icon-play-box {
+  --icon-size: 48px;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  /* pointer-events: none; */
+  -webkit-transform: translateY(8px);
+  transform: translateY(8px);
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  z-index: 2;
+}
+
+.box:hover .icon-play-box {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.icon-play-box svg {
+  width: 22px;
+  height: 22px;
+}

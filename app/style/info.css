@@ -17,8 +17,8 @@
 }
 
 .info-scroll {
-  max-height: 552px;
-  overflow-y: scroll;
+  max-height: 544px;
+  overflow-y: auto;
   transition: all 0.5s ease-in-out;
   padding-right: 6px;
 }

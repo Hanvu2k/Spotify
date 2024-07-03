@@ -1,0 +1,220 @@
+.btn {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+}
+
+.home {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-header {
+  position: absolute;
+  width: 100%;
+  height: 64px;
+  contain: content;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+  padding: 0 21.5px;
+}
+
+.background-header {
+  background-color: #121212;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  -webkit-transition: background-color 0.25s, opacity 0.4s ease-out;
+  transition: background-color 0.25s, opacity 0.4s ease-out;
+}
+
+.main-background {
+  background-color: #353535;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, #121212 100%);
+  height: 332px;
+  margin-top: -64px;
+  position: absolute;
+  transition-duration: 1s;
+  transition-property: background;
+  transition-timing-function: ease;
+  width: 100%;
+  z-index: 1;
+}
+
+.tag-background {
+  background-color: #121212;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transition: background-color 0.25s, opacity 0.4s ease-out;
+  transition: background-color 0.25s, opacity 0.4s ease-out;
+  z-index: 2;
+}
+
+.tag {
+  position: relative;
+  z-index: 3;
+  display: block;
+  padding: 4px 12px;
+  color: #fff;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+  background-color: #ffffff12;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tag:hover {
+  background-color: #ffffff20;
+}
+
+.tag--active {
+  background-color: #fff;
+  color: #000;
+}
+
+.tag--active:hover {
+  background-color: #fff;
+}
+
+.recent-container {
+  container-type: inline-size;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  margin-bottom: 16px;
+  min-height: 48px;
+  --min-col-width: 270px;
+  --item-height: 64px;
+  -webkit-box-ordinal-group: 0;
+  -ms-flex-order: -1;
+  order: -1;
+}
+
+.recent-listen {
+  display: grid;
+  grid-gap: 8px;
+  grid-auto-rows: var(--item-height, 48px);
+  grid-template: auto / repeat(auto-fill, minmax(max(270px, 25%), 1fr));
+  grid-template-rows: var(--item-height, 48px);
+}
+
+.recent-listen_item {
+  background-color: #ffffff12;
+  border-radius: 4px;
+  container-type: size;
+  cursor: pointer;
+}
+
+.recent-listen_item:hover .icon-play-recent {
+  opacity: 1;
+}
+
+.recent-listen_item:hover {
+  background-color: #ffffff20;
+}
+
+.recent-listen_item-img img {
+  height: var(--item-height, 48px);
+  width: auto;
+}
+
+.icon-play-recent {
+  position: absolute;
+  right: 10px;
+  z-index: 2;
+  opacity: 0;
+}
+
+@container (min-width: 815px) {
+  .recent-listen {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@container (min-width: 1141px) {
+  .recent-listen {
+    --item-height: 64px;
+    --icon-size: 48px;
+    --svg-size: 22px;
+    grid-gap: 12px;
+  }
+}
+
+/* self header */
+.shelf-header {
+  display: flex;
+  min-height: var(--shelf-header-height, 60px);
+  align-items: flex-end;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: var(--grid-gap);
+  grid-auto-rows: -webkit-min-content;
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--min-column-width, 210px), 1fr)
+  );
+  margin-inline-start: -12px;
+}
+
+.show {
+  opacity: 1;
+}
+
+.home-scroll-container {
+  position: relative;
+}
+
+.home-scroll-container:hover .scroll-thumb {
+  opacity: 1;
+}
+
+.home-scroll {
+  overflow-y: auto;
+}
+
+.home-scroll::-webkit-scrollbar {
+  width: 0;
+}
+
+.custom-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  z-index: 100;
+}
+
+.scroll-thumb {
+  height: 20%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  background-color: #555;
+  transition: all 0.3s;
+}

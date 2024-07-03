@@ -15,10 +15,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="layout">
       <div className="wrapper">
         <SideBar />
-        {children}
+        <div className="main-view">{children}</div>
         <Info />
+        <div className="playlist-bar">
+          <PlaylistBar isActive={isActive} callBack={handleActive} />
+        </div>
       </div>
-      <PlaylistBar isActive={isActive} callBack={handleActive} />
     </div>
   );
 };

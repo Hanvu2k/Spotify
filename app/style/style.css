@@ -27,11 +27,31 @@ h6 {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 365px auto 365px;
   gap: 8px;
   padding: 8px;
   padding-bottom: 0;
-  max-height: calc(100% - var(--footer-height));
+  grid-template-areas:
+    "left-sidebar main-view right-sidebar"
+    "now-playing-bar now-playing-bar now-playing-bar";
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.side-bar {
+  grid-area: left-sidebar;
+}
+.main-view {
+  grid-area: main-view;
+}
+.info {
+  grid-area: right-sidebar;
+}
+.playlist-bar {
+  grid-area: now-playing-bar;
 }
 
 .icon {
@@ -123,11 +143,6 @@ h6 {
   width: 100%;
 }
 
-.home {
-  overflow-y: scroll;
-  max-height: 608px;
-}
-
 .box-shadow {
   -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
@@ -138,6 +153,7 @@ h6 {
   width: 14px;
   opacity: 0;
   transition: background-color 0.3s ease-in-out;
+  position: absolute;
 }
 
 /* Track */
@@ -149,6 +165,7 @@ h6 {
 ::-webkit-scrollbar-thumb {
   opacity: 0;
   background-color: transparent;
+  background-color: #555; /* WebKit browsers */
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -171,9 +188,10 @@ h6 {
   position: relative;
   display: flex;
   justify-content: space-between;
-  width: 20px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   gap: 2px;
+  z-index: 1;
 }
 
 .icon-bar span {
@@ -194,9 +212,6 @@ h6 {
   }
   &:nth-of-type(4) {
     animation-delay: -3s; /* Start mid-way of return of animation */
-  }
-  &:nth-of-type(5) {
-    animation-delay: -2.4s; /* Start mid-way of return of animation */
   }
 }
 
@@ -220,4 +235,43 @@ h6 {
   100% {
     transform: scaleY(0.6); /* scale down to 60% */
   }
+}
+
+.active {
+  color: #fff;
+}
+
+.active svg {
+  fill: #fff;
+}
+
+.icon-active svg {
+  fill: #1fdf64;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.icon-play-2 {
+  background-color: #1fdf64;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  height: var(--icon-size, 32px);
+  width: var(--icon-size, 32px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.icon-play-2:hover {
+  transform: scale(1.1);
+}
+
+.icon-play-2 svg {
+  width: var(--svg-size, 16px);
+  height: var(--svg-size, 16px);
 }
